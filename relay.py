@@ -33,5 +33,5 @@ while True:
     output = ser.readline()
     output = output.strip()
     message = "heartbeats,name=%s value=%s\n" % (name, output)
-    print message
-    sock.sendto(message, telegraf_address)
+    print(message)
+    sock.sendto(message.encode('utf8'), telegraf_address)
