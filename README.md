@@ -12,6 +12,7 @@
 # Python Relay
 
     - Make sure you have Python 2
+    - Install pyserial module
     - Relay overview
 
 # Telegraf
