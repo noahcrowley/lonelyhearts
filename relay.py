@@ -8,7 +8,7 @@ import sys
 name = "noah"
 
 # Connections to the Arduino, over serial, and Telegraf, over a network socket.
-ser = serial.Serial('/dev/tty.usbmodem1451',9600)
+ser = serial.Serial('/dev/tty.usbmodem1441',9600)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # This code waits for the Unix Signal "SIGINT", which can be sent by typing
@@ -32,6 +32,6 @@ telegraf_address = ('localhost', 8094)
 while True:
     output = ser.readline()
     output = output.strip()
-    message = "heartbeats,name=%s value=%s\n" % (name, output)
+    message = "heartbeats,name=%s value=%s\n" % (name, output.decode('utf-8'))
     print(message)
     sock.sendto(message.encode('utf8'), telegraf_address)
